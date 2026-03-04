@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+body{
+  margin:0;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg,#f8fafc 0%,#eef2f7 100%);
+  color:#111827;
+}
+
+/* glass modal backdrop */
+.modal-backdrop{
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(6px);
+}
