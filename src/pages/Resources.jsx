@@ -1,40 +1,57 @@
-import { BookOpen, FileText, Newspaper } from "lucide-react"
+import { FileText, BookOpen, BarChart3 } from "lucide-react"
 import Reveal from "../components/Reveal"
 
 export default function Resources(){
 
 return(
 
-<div className="min-h-screen pt-32 pb-24">
+<div className="relative min-h-screen pt-32 pb-28 bg-gray-50 overflow-hidden">
 
-<div className="max-w-4xl mx-auto text-center px-8 mb-20">
 
-<h1 className="text-5xl font-semibold text-gray-900 mb-6">
+{/* glow background */}
+
+<div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-blue-400/20 blur-[180px] rounded-full"></div>
+
+
+{/* hero */}
+
+<div className="relative max-w-4xl mx-auto text-center px-6 mb-24">
+
+<h1 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 tracking-tight">
 Resources
 </h1>
 
-<p className="text-lg text-gray-600">
-Guides and insights to help understand taxation
-and financial planning in Ireland.
+<p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+Insights, guides and financial resources to help
+individuals and businesses make informed decisions.
 </p>
 
 </div>
 
 
-<div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-8">
+
+{/* resource grid */}
+
+<div className="relative max-w-6xl mx-auto grid md:grid-cols-3 gap-10 px-6">
+
 
 <Reveal>
 
-<div className="bg-white border border-gray-200 rounded-xl p-10 shadow-sm hover:shadow-lg transition">
+<div className="group bg-white border border-gray-200 rounded-2xl p-10 shadow-sm hover:shadow-xl transition flex flex-col h-full">
 
-<BookOpen className="mb-4 text-gray-700"/>
+<div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 mb-6 group-hover:bg-black transition">
+
+<FileText className="text-gray-700 group-hover:text-white"/>
+
+</div>
 
 <h3 className="text-xl font-semibold text-gray-900 mb-3">
 Tax Guides
 </h3>
 
-<p className="text-gray-600 text-sm">
-Practical explanations of Irish tax regulations.
+<p className="text-gray-600 text-sm leading-relaxed flex-grow">
+Practical guides explaining Irish taxation rules,
+compliance obligations and financial planning.
 </p>
 
 </div>
@@ -42,18 +59,24 @@ Practical explanations of Irish tax regulations.
 </Reveal>
 
 
+
 <Reveal>
 
-<div className="bg-white border border-gray-200 rounded-xl p-10 shadow-sm hover:shadow-lg transition">
+<div className="group bg-white border border-gray-200 rounded-2xl p-10 shadow-sm hover:shadow-xl transition flex flex-col h-full">
 
-<FileText className="mb-4 text-gray-700"/>
+<div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 mb-6 group-hover:bg-black transition">
+
+<BookOpen className="text-gray-700 group-hover:text-white"/>
+
+</div>
 
 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-Compliance Updates
+Financial Articles
 </h3>
 
-<p className="text-gray-600 text-sm">
-Latest regulatory updates affecting businesses.
+<p className="text-gray-600 text-sm leading-relaxed flex-grow">
+Expert insights on financial management,
+tax planning and business strategy.
 </p>
 
 </div>
@@ -61,18 +84,24 @@ Latest regulatory updates affecting businesses.
 </Reveal>
 
 
+
 <Reveal>
 
-<div className="bg-white border border-gray-200 rounded-xl p-10 shadow-sm hover:shadow-lg transition">
+<div className="group bg-white border border-gray-200 rounded-2xl p-10 shadow-sm hover:shadow-xl transition flex flex-col h-full">
 
-<Newspaper className="mb-4 text-gray-700"/>
+<div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 mb-6 group-hover:bg-black transition">
+
+<BarChart3 className="text-gray-700 group-hover:text-white"/>
+
+</div>
 
 <h3 className="text-xl font-semibold text-gray-900 mb-3">
-Industry Insights
+Reports & Insights
 </h3>
 
-<p className="text-gray-600 text-sm">
-Articles on financial planning and tax optimisation.
+<p className="text-gray-600 text-sm leading-relaxed flex-grow">
+Industry insights and financial trends affecting
+Irish businesses and professionals.
 </p>
 
 </div>

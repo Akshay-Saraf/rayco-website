@@ -1,6 +1,7 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
-export default function FormModal({ type, close }) {
+export default function FormModal({ type, close }){
 
 const [step,setStep] = useState("form")
 
@@ -10,6 +11,18 @@ email:"",
 phone:"",
 message:""
 })
+
+useEffect(()=>{
+
+function handleEsc(e){
+if(e.key === "Escape") close()
+}
+
+window.addEventListener("keydown",handleEsc)
+
+return ()=>window.removeEventListener("keydown",handleEsc)
+
+},[close])
 
 function handleChange(e){
 setForm({...form,[e.target.name]:e.target.value})
@@ -26,9 +39,19 @@ setStep("sent")
 
 return(
 
-<div className="fixed inset-0 bg-black/30 backdrop-blur-sm flex items-center justify-center z-50">
+<div
+className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4"
+onClick={close}
+>
 
-<div className="bg-white w-[520px] rounded-2xl shadow-2xl p-10 relative">
+<motion.div
+initial={{opacity:0,scale:0.96,y:20}}
+animate={{opacity:1,scale:1,y:0}}
+exit={{opacity:0,scale:0.96}}
+transition={{duration:0.25}}
+onClick={(e)=>e.stopPropagation()}
+className="bg-white w-full max-w-lg rounded-2xl shadow-2xl p-8 md:p-10 relative"
+>
 
 <button
 onClick={close}
@@ -37,9 +60,18 @@ className="absolute right-4 top-4 text-gray-400 hover:text-gray-700 text-lg"
 ×
 </button>
 
-{step === "form" && (
+<AnimatePresence mode="wait">
 
-<form onSubmit={handleSubmit} className="space-y-6">
+{step==="form" && (
+
+<motion.form
+key="form"
+initial={{opacity:0,y:10}}
+animate={{opacity:1,y:0}}
+exit={{opacity:0}}
+onSubmit={handleSubmit}
+className="space-y-6"
+>
 
 <div>
 
@@ -53,29 +85,26 @@ Leave your details and our team will get back to you.
 
 </div>
 
-<div className="grid grid-cols-2 gap-4">
+<div className="grid md:grid-cols-2 gap-4">
 
-<input
+<Input
 name="name"
 placeholder="Full Name"
 onChange={handleChange}
-className="border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
 />
 
-<input
+<Input
 name="phone"
 placeholder="Phone"
 onChange={handleChange}
-className="border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
 />
 
 </div>
 
-<input
+<Input
 name="email"
 placeholder="Email Address"
 onChange={handleChange}
-className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
 />
 
 <textarea
@@ -83,7 +112,7 @@ name="message"
 placeholder="How can we help?"
 rows="4"
 onChange={handleChange}
-className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black"
+className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition"
 />
 
 <div className="flex justify-between items-center pt-4">
@@ -96,21 +125,30 @@ className="text-gray-500 hover:text-gray-900"
 Cancel
 </button>
 
-<button
+<motion.button
+whileHover={{scale:1.04}}
+whileTap={{scale:0.95}}
 className="bg-black text-white px-6 py-3 rounded-md font-medium hover:bg-gray-900 transition"
 >
 Submit
-</button>
+</motion.button>
 
 </div>
 
-</form>
+</motion.form>
 
 )}
 
-{step === "confirm" && (
 
-<div className="space-y-6">
+{step==="confirm" && (
+
+<motion.div
+key="confirm"
+initial={{opacity:0,y:10}}
+animate={{opacity:1,y:0}}
+exit={{opacity:0}}
+className="space-y-6"
+>
 
 <h2 className="text-xl font-semibold text-gray-900">
 Confirm Your Details
@@ -134,22 +172,31 @@ className="text-gray-600 hover:text-black"
 Edit
 </button>
 
-<button
+<motion.button
+whileHover={{scale:1.04}}
+whileTap={{scale:0.95}}
 onClick={sendEmail}
 className="bg-black text-white px-6 py-2 rounded-md hover:bg-gray-900"
 >
 Confirm
-</button>
+</motion.button>
 
 </div>
 
-</div>
+</motion.div>
 
 )}
 
-{step === "sent" && (
 
-<div className="text-center space-y-6">
+{step==="sent" && (
+
+<motion.div
+key="sent"
+initial={{opacity:0,y:10}}
+animate={{opacity:1,y:0}}
+exit={{opacity:0}}
+className="text-center space-y-6"
+>
 
 <h2 className="text-2xl font-semibold text-gray-900">
 Request Sent
@@ -159,20 +206,41 @@ Request Sent
 Our team will contact you shortly.
 </p>
 
-<button
+<motion.button
+whileHover={{scale:1.05}}
+whileTap={{scale:0.95}}
 onClick={close}
 className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-900"
 >
 Close
-</button>
+</motion.button>
 
-</div>
+</motion.div>
 
 )}
 
-</div>
+</AnimatePresence>
+
+</motion.div>
 
 </div>
 
 )
+}
+
+
+
+function Input({name,placeholder,onChange}){
+
+return(
+
+<input
+name={name}
+placeholder={placeholder}
+onChange={onChange}
+className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-black transition"
+/>
+
+)
+
 }

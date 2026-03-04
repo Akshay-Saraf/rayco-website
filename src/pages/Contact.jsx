@@ -5,31 +5,44 @@ export default function Contact(){
 
 return(
 
-<div className="min-h-screen pt-32 pb-24">
+<div className="relative min-h-screen pt-32 pb-28 bg-gray-50 overflow-hidden">
 
-<div className="max-w-4xl mx-auto text-center px-8 mb-20">
+{/* subtle glow background */}
 
-<h1 className="text-5xl font-semibold text-gray-900 mb-6">
+<div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-blue-400/20 blur-[180px] rounded-full"></div>
+
+
+{/* hero */}
+
+<div className="relative max-w-4xl mx-auto text-center px-6 mb-24">
+
+<h1 className="text-4xl md:text-5xl font-semibold text-gray-900 mb-6 tracking-tight">
 Contact Us
 </h1>
 
-<p className="text-lg text-gray-600">
-Our team is available to assist with accounting
-and taxation queries.
+<p className="text-lg md:text-xl text-gray-600 leading-relaxed">
+Our team is available to assist with accounting,
+tax advisory and financial planning enquiries.
 </p>
 
 </div>
 
 
-<div className="max-w-3xl mx-auto grid md:grid-cols-3 gap-8 px-8">
+{/* contact cards */}
+
+<div className="relative max-w-5xl mx-auto grid md:grid-cols-3 gap-8 px-6">
 
 <Reveal>
 
-<div className="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm">
+<div className="group flex flex-col items-center text-center bg-white border border-gray-200 rounded-2xl p-10 shadow-sm hover:shadow-xl transition">
 
-<MapPin className="mx-auto mb-4 text-gray-700"/>
+<div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 mb-6 group-hover:bg-black transition">
 
-<p className="text-gray-700 text-sm">
+<MapPin className="text-gray-700 group-hover:text-white"/>
+
+</div>
+
+<p className="text-gray-700 text-sm font-medium">
 Dublin, Ireland
 </p>
 
@@ -38,13 +51,18 @@ Dublin, Ireland
 </Reveal>
 
 
+
 <Reveal>
 
-<div className="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm">
+<div className="group flex flex-col items-center text-center bg-white border border-gray-200 rounded-2xl p-10 shadow-sm hover:shadow-xl transition">
 
-<Mail className="mx-auto mb-4 text-gray-700"/>
+<div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 mb-6 group-hover:bg-black transition">
 
-<p className="text-gray-700 text-sm">
+<Mail className="text-gray-700 group-hover:text-white"/>
+
+</div>
+
+<p className="text-gray-700 text-sm font-medium">
 info@rayco.ie
 </p>
 
@@ -53,13 +71,18 @@ info@rayco.ie
 </Reveal>
 
 
+
 <Reveal>
 
-<div className="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-sm">
+<div className="group flex flex-col items-center text-center bg-white border border-gray-200 rounded-2xl p-10 shadow-sm hover:shadow-xl transition">
 
-<Phone className="mx-auto mb-4 text-gray-700"/>
+<div className="w-12 h-12 flex items-center justify-center rounded-lg bg-gray-100 mb-6 group-hover:bg-black transition">
 
-<p className="text-gray-700 text-sm">
+<Phone className="text-gray-700 group-hover:text-white"/>
+
+</div>
+
+<p className="text-gray-700 text-sm font-medium">
 +353 000000000
 </p>
 

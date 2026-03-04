@@ -1,52 +1,65 @@
+import { motion } from "framer-motion"
+
 export default function Footer(){
 
 return(
 
-<footer className="bg-gray-900 text-gray-400 mt-24">
+<footer className="bg-gray-950 text-gray-400">
 
-<div className="max-w-7xl mx-auto px-10 py-16 grid md:grid-cols-3 gap-10">
+<div className="max-w-7xl mx-auto px-6 md:px-10 py-16 grid gap-12 md:grid-cols-3">
+
 
 <div>
 
-<h3 className="text-white font-semibold mb-4">
+<h3 className="text-white font-semibold text-lg mb-4">
 Ray & Co Accounting
 </h3>
 
-<p className="text-sm leading-relaxed">
-Professional accounting and tax advisory services
-based in Dublin, Ireland. We help individuals and
-businesses stay compliant, optimise taxes and
-grow confidently.
+<p className="text-sm leading-relaxed max-w-sm">
+Professional accounting and tax advisory services based in Dublin, Ireland.
+Helping individuals and businesses stay compliant, optimise taxes and grow
+with confidence.
 </p>
 
 </div>
 
+
 <div>
 
-<h3 className="text-white font-semibold mb-4">
+<h3 className="text-white font-semibold text-lg mb-4">
 Contact
 </h3>
 
-<p className="text-sm">Dublin, Ireland</p>
-<p className="text-sm">info@rayco.ie</p>
-<p className="text-sm">+353 000000000</p>
+<ul className="space-y-2 text-sm">
+
+<li>Dublin, Ireland</li>
+<li>info@rayco.ie</li>
+<li>+353 000000000</li>
+
+</ul>
 
 </div>
+
 
 <div>
 
-<h3 className="text-white font-semibold mb-4">
+<h3 className="text-white font-semibold text-lg mb-4">
 Services
 </h3>
 
-<p className="text-sm">Personal Tax</p>
-<p className="text-sm">Corporate Accounting</p>
-<p className="text-sm">VAT Advisory</p>
-<p className="text-sm">Financial Consulting</p>
+<ul className="space-y-2 text-sm">
+
+<FooterLink label="Personal Tax"/>
+<FooterLink label="Corporate Accounting"/>
+<FooterLink label="VAT Advisory"/>
+<FooterLink label="Financial Consulting"/>
+
+</ul>
 
 </div>
 
 </div>
+
 
 <div className="border-t border-gray-800 text-center py-6 text-sm text-gray-500">
 
@@ -57,4 +70,21 @@ Services
 </footer>
 
 )
+}
+
+
+
+function FooterLink({label}){
+
+return(
+
+<motion.li
+whileHover={{x:4}}
+className="cursor-pointer hover:text-white transition"
+>
+{label}
+</motion.li>
+
+)
+
 }
